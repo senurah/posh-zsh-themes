@@ -38,6 +38,15 @@
           "type": "path"
         },
         {
+          "foreground": "#2560ff",
+          "options": {
+            "display_mode": "files"
+          },
+          "style": "plain",
+          "template": " \uf308 ",
+          "type": "docker"
+        },
+        {
           "foreground": "p:go",
           "style": "powerline",
           "template": "({{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}) ",
