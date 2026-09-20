@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "session": "#FFE082",
+    "path": "",
+    "go": "",
+    "python": "",
+    "git": "",
+    "executiontime": "",
+    "battery": ""
+  },
+  "blocks": [
+    {
+      "alignment": "left",
+      "segments": [
+        {
+          "foreground": "p:session",
+          "style": "plain",
+          "template": "@{{ .UserName }} ➜",
+          "type": "session"
+        },
+        {
+          "foreground": "#56B6C2",
+          "options": {
+            "style": "agnoster_short"
+          },
+          "style": "plain",
+          "template": " {{ .Path }} ",
+          "type": "path"
+        },
+        {
+          "foreground": "#7FD5EA",
+          "style": "powerline",
+          "template": "({{ if .Error }}{{ .Error }}{{ else }}{{ .Full }}{{ end }}) ",
+          "type": "go"
+        },
+        {
+          "foreground": "#9e7eff",
+          "style": "powerline",
+          "template": "( {{ if .Error }}{{ .Error }}{{ else }}{{ if .Venv }}{{ .Venv }} {{ end }}{{ .Full }}{{ end }}) ",
+          "type": "python"
+        },
+        {
+          "foreground": "#B7BDF8",
+          "options": {
+            "branch_icon": "\ue725 ",
+            "cherry_pick_icon": "\ue29b ",
+            "commit_icon": "\uf417 ",
+            "merge_icon": "\ue727 ",
+            "no_commits_icon": "\uf0c3 ",
+            "rebase_icon": "\ue728 ",
+            "revert_icon": "\uf0e2 ",
+            "tag_icon": "\uf412 "
+          },
+          "template": "{{ .HEAD }} ",
+          "style": "plain",
+          "type": "git"
+        },
+        {
+          "foreground": "#FFAB91",
+          "options": {
+            "always_enabled": false,
+            "style": "austin",
+            "threshold": 100
+          },
+          "style": "powerline",
+          "template": "{{ .FormattedMs }}",
+          "type": "executiontime"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
+      "alignment": "left",
+      "newline": true,
+      "segments": [
+        {
+          "foreground": "#193549",
+          "foreground_templates": [
+            "{{if eq \"Charging\" .State.String}}#64B5F6{{end}}",
+            "{{if eq \"Discharging\" .State.String}}#E36464{{end}}",
+            "{{if eq \"Full\" .State.String}}#66BB6A{{end}}"
+          ],
+          "options": {
+            "charged_icon": " ",
+            "charging_icon": " ",
+            "discharging_icon": " "
+          },
+          "style": "powerline",
+          "template": "[{{ if not .Error }}{{ .Icon }}{{ .Percentage }}{{ end }}{{ .Error }}]",
+          "type": "battery"
+        }
+      ],
+      "type": "prompt"
+    }
+  ],
+  "final_space": true,
+  "version": 4
+}
